@@ -4,15 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Hero } from "@/components/Hero";
 import { TourCard } from "@/components/TourCard";
-
-// Naše "databáze" tras
-const TOURS = [
-  { id: 1, title: "Prachov Rocks Maze", duration: "4h", difficulty: "Medium", distance: "6km", category: "Rock Cities" },
-  { id: 2, title: "Trosky Castle Hike", duration: "3h", difficulty: "Easy", distance: "5km", category: "Castles" },
-  { id: 3, title: "Mala Skala Canyon", duration: "5h", difficulty: "Hard", distance: "12km", category: "Nature" },
-  { id: 4, title: "Hruba Skala Viewpoints", duration: "3.5h", difficulty: "Easy", distance: "7km", category: "Rock Cities" },
-  { id: 5, title: "Kost Castle & Valecov", duration: "6h", difficulty: "Medium", distance: "14km", category: "Castles" },
-];
+import { TOURS } from "@/lib/data";
 
 // Seznam kategorií pro vygenerování tlačítek
 const CATEGORIES = ["All Tours", "Rock Cities", "Castles"];
@@ -78,7 +70,7 @@ export default function Home() {
               onClick={scrollToResults}
               className="w-full md:w-auto px-8 py-3 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold rounded-xl transition-colors"
             >
-              Find My Trail
+              Find My Path
             </button>
           </div>
         </div>

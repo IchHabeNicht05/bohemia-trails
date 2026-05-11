@@ -1,29 +1,38 @@
-// components/TourCard.tsx
-import Link from 'next/link'; // Importujeme Link pro rychlé navigování
+import Link from 'next/link';
+import Image from 'next/image';
+import { Clock, Mountain, Map, ArrowRight } from 'lucide-react';
 
 interface TourProps {
-  id: number | string; // Přidali jsme ID
+  id: number | string;
   title: string;
   duration: string;
   difficulty: string;
   distance: string;
   category?: string;
+  imageUrl?: string; // Přidali jsme možnost předat vlastní fotku
 }
 
-export const TourCard = ({ id, title, duration, difficulty, distance, category }: TourProps) => {
+export const TourCard = ({ id, title, duration, difficulty, distance, category, imageUrl }: TourProps) => {
   return (
     <div className="bg-white border border-stone-200 shadow-sm rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group cursor-pointer">
       
       {/* Horní část: Fotka */}
-      <div className="relative h-56 overflow-hidden bg-stone-100">
+      <div className="relative h-56 overflow-hidden bg-emerald-100">
         {category && (
           <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm px-4 py-1.5 text-xs font-black tracking-wide uppercase text-emerald-900 rounded-full shadow-sm">
             {category}
           </div>
         )}
-        <div className="absolute inset-0 bg-emerald-100 flex items-center justify-center text-emerald-800/40 font-medium group-hover:scale-105 transition-transform duration-500">
-          [ Photo of {title} ]
-        </div>
+        
+        {/* Next.js Image s fallbackem na Jizerky fotku */}
+        <Image
+          src={imageUrl || "/Jizerky.jpg"} 
+          alt={title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        {/* Jemný tmavý přechod, aby karta nebyla dole moc světlá */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Spodní část: Texty */}
@@ -32,23 +41,27 @@ export const TourCard = ({ id, title, duration, difficulty, distance, category }
           {title}
         </h3>
         
-        <div className="flex flex-wrap gap-4 text-sm text-stone-600 mb-8 font-medium">
-          <div className="flex items-center gap-1.5">
-            <span className="text-emerald-500 text-lg">⏱</span> {duration}
+        <div className="flex flex-wrap gap-5 text-sm text-stone-600 mb-8 font-medium">
+          <div className="flex items-center gap-2">
+            <Clock size={18} className="text-emerald-500" /> 
+            <span>{duration}</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-emerald-500 text-lg">🥾</span> {difficulty}
+          <div className="flex items-center gap-2">
+            <Mountain size={18} className="text-emerald-500" /> 
+            <span>{difficulty}</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-emerald-500 text-lg">📏</span> {distance}
+          <div className="flex items-center gap-2">
+            <Map size={18} className="text-emerald-500" /> 
+            <span>{distance}</span>
           </div>
         </div>
 
-        {/* TADY JE TA ZMĚNA: Tlačítko je teď uvnitř Linku */}
-        <Link href={`/tour/${id}`} className="mt-auto">
-          <button className="w-full py-3.5 bg-stone-50 text-emerald-800 border border-stone-200 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 font-bold rounded-xl transition-all">
-            View Details
-          </button>
+        {/* Správné použití Linku ostylovaného jako tlačítko s šipkou */}
+        <Link 
+          href={`/tour/${id}`} 
+          className="mt-auto w-full py-3.5 bg-stone-50 text-emerald-800 border border-stone-200 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 font-bold rounded-xl transition-all flex items-center justify-center gap-2"
+        >
+          View Details <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
     </div>

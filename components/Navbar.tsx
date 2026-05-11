@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react"; // Pokud nemáš lucide-react, nainstaluj: npm install lucide-react
+import { usePathname } from "next/navigation"; // Přidáno pro zjištění aktuální stránky
+import { Menu, X } from "lucide-react";
 
-export const Navbar = () => {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // Získáme aktuální URL adresu
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,41 +24,56 @@ export const Navbar = () => {
   // Pomocná funkce pro zavření menu při kliknutí na odkaz
   const closeMenu = () => setIsOpen(false);
 
+  // Pomocná funkce pro zjištění, zda je odkaz aktivní
+  const isActive = (path: string) => pathname === path;
+
+  // Seznam odkazů pro snadnější mapování
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About Me", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
     <nav 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled || isOpen
-            ? "bg-emerald-950/95 backdrop-blur-md shadow-lg py-4" 
-            : "bg-emerald-900 py-6" 
+        isScrolled
+            ? "bg-emerald-950/90 backdrop-blur-lg border-b border-emerald-900/50 shadow-sm py-4" 
+            : "bg-emerald-800 py-6" 
         }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         
         {/* LOGO */}
-        <Link href="/" className="text-2xl font-bold tracking-tight z-50" onClick={closeMenu}>
-          <span className="text-emerald-500">Bohemia</span>
-          <span className="text-white">Trails</span>
+        <Link href="/" className="text-2xl font-bold tracking-tight z-50 flex items-center" onClick={closeMenu}>
+          Bohemia<span className="text-emerald-500">Path</span>
         </Link>
 
         {/* DESKTOP ODKAZY */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/" className="text-emerald-50 hover:text-emerald-400 transition-colors text-sm font-medium">
-            Home
-          </Link>
-          <Link href="/about" className="text-emerald-50 hover:text-emerald-400 transition-colors text-sm font-medium">
-            About Me
-          </Link>
-          <Link href="/contact" className="text-emerald-50 hover:text-emerald-400 transition-colors text-sm font-medium">
-            Contact
-          </Link>
-          <Link href="/custom-tour" className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold rounded-full transition-colors text-sm">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.name}
+              href={link.path} 
+              className={`text-sm font-medium transition-colors hover:text-emerald-400 ${
+                isActive(link.path) ? "text-emerald-400" : "text-emerald-50"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+          
+          <Link 
+            href="/custom-tour" 
+            className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold rounded-full transition-all hover:scale-105 hover:shadow-md text-sm"
+          >
             Custom Tour
           </Link>
         </div>
 
         {/* HAMBURGER TLAČÍTKO (Pouze pro mobil) */}
         <button 
-          className="md:hidden text-white z-50 p-2"
+          className="md:hidden text-emerald-50 hover:text-emerald-400 transition-colors z-50 p-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -65,27 +82,31 @@ export const Navbar = () => {
 
         {/* MOBILNÍ MENU OVERLAY */}
         <div 
-          className={`fixed top-0 left-0 w-full h-screen bg-emerald-950 transition-transform duration-300 ease-in-out md:hidden flex flex-col items-center justify-center p-8 z-40 ${
-            isOpen ? "translate-x-0" : "translate-x-full"
+          className={`fixed inset-0 min-h-screen bg-emerald-950/98 backdrop-blur-md transition-all duration-300 ease-in-out md:hidden flex flex-col items-center justify-center p-8 z-40 ${
+            isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           }`}
         >
-          {/* Odkazy ve sloupci s větším odsazením */}
-          <div className="flex flex-col items-center gap-10 w-full">
-            <Link href="/" onClick={closeMenu} className="text-3xl text-emerald-50 hover:text-emerald-400 font-semibold transition-colors">
-              Home
-            </Link>
-            <Link href="/about" onClick={closeMenu} className="text-3xl text-emerald-50 hover:text-emerald-400 font-semibold transition-colors">
-              About Me
-            </Link>
-            <Link href="/contact" onClick={closeMenu} className="text-3xl text-emerald-50 hover:text-emerald-400 font-semibold transition-colors">
-              Contact
-            </Link>
+          <div className={`flex flex-col items-center gap-8 w-full transition-transform duration-500 delay-100 ${
+            isOpen ? "translate-y-0" : "translate-y-10"
+          }`}>
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name}
+                href={link.path} 
+                onClick={closeMenu} 
+                className={`text-3xl font-semibold transition-colors ${
+                  isActive(link.path) ? "text-emerald-400" : "text-emerald-50 hover:text-emerald-400"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
             
             {/* Tlačítko jako samostatná velká položka */}
             <Link 
               href="/custom-tour" 
               onClick={closeMenu}
-              className="mt-6 w-full max-w-sm text-center px-8 py-5 bg-emerald-500 text-emerald-950 font-bold rounded-full text-2xl shadow-xl hover:bg-emerald-400 transition-colors"
+              className="mt-6 w-full max-w-sm text-center px-8 py-5 bg-emerald-500 text-emerald-950 font-bold rounded-full text-xl shadow-xl hover:bg-emerald-400 hover:scale-105 transition-all"
             >
               Custom Tour
             </Link>
@@ -95,4 +116,4 @@ export const Navbar = () => {
       </div>
     </nav>
   );
-};
+}

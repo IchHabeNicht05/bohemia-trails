@@ -1,0 +1,7 @@
+export const TOURS = [
+  { id: 1, title: "Prachov Rocks Maze", duration: "4h", difficulty: "Medium", distance: "6km", category: "Rock Cities", description: "Lose yourself in the labyrinth of towering sandstone columns. This trail takes you through the heart of the Bohemian Paradise, offering breathtaking viewpoints and narrow rock passages." },
+  { id: 2, title: "Trosky Castle Hike", duration: "3h", difficulty: "Easy", distance: "5km", category: "Castles", description: "A pleasant hike leading to the iconic ruin of Trosky Castle. Enjoy panoramic views of the surrounding countryside from the top of the volcanic plugs." },
+  { id: 3, title: "Mala Skala Canyon", duration: "5h", difficulty: "Hard", distance: "12km", category: "Nature", description: "Follow the Jizera river through a deep, forested canyon. This challenging but rewarding hike features rugged terrain, stunning viewpoints, and peaceful nature." },
+  { id: 4, title: "Hruba Skala Viewpoints", duration: "3.5h", difficulty: "Easy", distance: "7km", category: "Rock Cities", description: "Walk along the ridge of the Hruba Skala rock town. This relatively flat trail connects several magnificent viewpoints looking over hundreds of sandstone towers." },
+  { id: 5, title: "Kost Castle & Valecov", duration: "6h", difficulty: "Medium", distance: "14km", category: "Castles", description: "Explore the medieval Kost Castle situated in a romantic valley, followed by a hike through pine forests to the rock-hewn ruins of Valecov." },
+];
