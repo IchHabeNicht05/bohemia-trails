@@ -12,7 +12,7 @@ export default function AboutPage() {
         {/* Fotka průvodce */}
         <div className="relative aspect-[3/4] bg-stone-100 rounded-2xl overflow-hidden shadow-sm">
           <Image 
-            src="/Jizerky.jpg" 
+            src="/aboutme.png" 
             alt="Guide Profile" 
             fill 
             className="object-cover"
@@ -22,10 +22,7 @@ export default function AboutPage() {
         {/* Texty */}
         <div className="prose prose-lg text-stone-600">
           <p className="leading-relaxed mb-6 font-medium">
-            Hi, I'm your local guide for Bohemia. I've spent my whole life exploring the sandstone rocks and deep forests of this beautiful region.
-          </p>
-          <p className="leading-relaxed">
-            My mission is to show you places that are hidden from the common tourists. Experience nature in its purest form.
+            My name is Vojta. I was born in the Jizera Mountains, and after seven years in Prague, I returned back home. The surrounding mountains have always fascinated me, and I would love to show them to you — not just the famous places, but also the hidden corners, forgotten stories, and the unique atmosphere that make this region so special. Together, we’ll explore beautiful landscapes, mountain trails, local history, and places most tourists never get to see
           </p>
         </div>
         

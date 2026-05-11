@@ -1,4 +1,4 @@
-"use client"; // TOTO JE KLÍČOVÉ: Říkáme Next.js, že zde bude interakce (useState, onClick)
+"use client";
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -6,20 +6,17 @@ import { Hero } from "@/components/Hero";
 import { TourCard } from "@/components/TourCard";
 import { TOURS } from "@/lib/data";
 
-// Seznam kategorií pro vygenerování tlačítek
-const CATEGORIES = ["All Tours", "Rock Cities", "Castles"];
+// Přidal jsem "Nature", aby filtr fungoval pro všechny tvé túry
+const CATEGORIES = ["All Tours", "Rock Cities", "Nature"];
 
 export default function Home() {
-  // STAV: Pamatuje si, jaká kategorie je zrovna zakliknutá
   const [activeCategory, setActiveCategory] = useState("All Tours");
 
-  // LOGIKA: Vyfiltruje trasy podle vybrané kategorie
   const filteredTours = TOURS.filter(tour => {
     if (activeCategory === "All Tours") return true;
     return tour.category === activeCategory;
   });
 
-  // LOGIKA: Plynulý scroll k výsledkům po kliknutí na "Find My Trail"
   const scrollToResults = () => {
     document.getElementById('tours-section')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -27,11 +24,11 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* 1. HERO SEKCE */}
-      <section className="relative pt-32 pb-40 px-6 text-center flex flex-col justify-center min-h-[60vh]">
+      <section className="relative pt-32 pb-40 px-6 text-center flex flex-col justify-center min-h-[90vh]">
         
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
-            src="/Jizerky.jpg" 
+            src="/images/tours/prettview4.webp" 
             alt="Bohemian Paradise Landscape"
             fill
             priority
@@ -48,7 +45,6 @@ export default function Home() {
         <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full max-w-4xl px-6 z-20">
           <div className="bg-white rounded-2xl shadow-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between border border-emerald-100">
             
-            {/* Kategorie */}
             <div className="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
               {CATEGORIES.map((category) => (
                 <button 
@@ -65,7 +61,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Tlačítko akce */}
             <button 
               onClick={scrollToResults}
               className="w-full md:w-auto px-8 py-3 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold rounded-xl transition-colors"
@@ -76,7 +71,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. VÝPIS TRAS - přidáno id="tours-section" pro fungování scrollování */}
+      {/* 3. VÝPIS TRAS */}
       <section id="tours-section" className="bg-stone-50 pt-24 pb-20 px-6 min-h-screen">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
@@ -88,7 +83,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Pokud není nalezena žádná trasa (např. v budoucnu pro prázdnou kategorii) */}
           {filteredTours.length === 0 ? (
             <div className="text-center py-20 text-emerald-600">
               <p className="text-xl font-medium">No tours found in this category.</p>
@@ -100,7 +94,6 @@ export default function Home() {
               </button>
             </div>
           ) : (
-            // ZDE JE ZMĚNA: Mapujeme přes filteredTours, ne přes všechny TOURS
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredTours.map((tour) => (
                 <TourCard 
@@ -111,6 +104,7 @@ export default function Home() {
                   difficulty={tour.difficulty}
                   distance={tour.distance}
                   category={tour.category}
+                  images={tour.images} 
                 />
               ))}
             </div>
