@@ -13,7 +13,7 @@ export default function CustomTourPage() {
     const formData = new FormData(e.currentTarget);
     
     // Zde nahradíš "YOUR_FORMSPREE_ID" kódem, který dostaneš po registraci na formspree.io
-    const response = await fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
+    const response = await fetch("https://formspree.io/f/mojryker", {
       method: "POST",
       body: formData,
       headers: {

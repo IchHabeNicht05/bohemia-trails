@@ -11,7 +11,7 @@ export default function ContactPage() {
       <div className="bg-white p-8 md:p-10 rounded-3xl border border-stone-200 shadow-sm text-left">
         
         {/* ZDE PŘIDÁŠ SVŮJ FORMSPREE ODKAZ DO ACTION */}
-        <form action="https://formspree.io/f/TVŮJ_UNIKÁTNÍ_KÓD" method="POST" className="space-y-6">
+        <form action="https://formspree.io/f/xvzldwke" method="POST" className="space-y-6">
           
           <div>
             <label className="block text-sm font-bold text-emerald-950 mb-2">Name</label>
