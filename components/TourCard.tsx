@@ -9,12 +9,14 @@ interface TourProps {
   difficulty: string;
   distance: string;
   category?: string;
-  images?: string[]; // Změněno z imageUrl na pole images
+  images: { url: string; portrait: boolean }[];
 }
 
 export const TourCard = ({ id, title, duration, difficulty, distance, category, images }: TourProps) => {
   // Definujeme hlavní obrázek: vezmeme první z pole, pokud pole neexistuje nebo je prázdné, použijeme fallback
-  const mainImage = images && images.length > 0 ? images[0] : "/Jizerky.jpg";
+  const mainImage = (images && images.length > 0 && images[0].url) 
+    ? images[0].url 
+    : "/Jizerky.jpg";
 
   return (
     <div className="bg-white border border-stone-200 shadow-sm rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group cursor-pointer">

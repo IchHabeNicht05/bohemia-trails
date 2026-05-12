@@ -6,7 +6,7 @@ export const Hero = () => {
         Bohemia Path
       </h1>
       <p className="text-xl text-emerald-100 max-w-2xl mx-auto">
-        Explore the hidden gems of the Czech Republic with local guides.
+        Explore the hidden gems of the Czechia Republic with local guides.
       </p>
     </div>
   );

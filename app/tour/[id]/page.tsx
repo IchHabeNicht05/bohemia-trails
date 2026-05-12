@@ -17,7 +17,7 @@ export default async function TourDetail({
   if (!tour) return notFound();
 
   return (
-    <main className="min-h-screen pt-32 pb-20 px-6 max-w-4xl mx-auto">
+    <main className="min-h-screen pt-32 pb-20 px-6 max-w-6xl mx-auto">
       <Link
         href="/"
         className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-800 font-semibold mb-8 transition-colors group"

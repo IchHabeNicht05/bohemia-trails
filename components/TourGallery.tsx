@@ -3,43 +3,59 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function TourGallery({ images }: { images: string[] }) {
+interface TourImage {
+  url: string;
+  portrait: boolean;
+}
+
+export default function TourGallery({ images }: { images: TourImage[] }) {
   const [activeImage, setActiveImage] = useState(images[0]);
+  const [isFading, setIsFading] = useState(false);
+
+  // Funkce pro plynulé prolnutí fotek při kliknutí
+  const handleImageChange = (img: TourImage) => {
+    if (img.url === activeImage.url) return;
+    setIsFading(true);
+    setTimeout(() => {
+      setActiveImage(img);
+      setIsFading(false);
+    }, 150);
+  };
 
   return (
-    <div className="space-y-4">
-      {/* Hlavní velká fotka */}
-      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-md border border-stone-100">
+    <div className="flex flex-col items-center space-y-6 w-full">
+      <div 
+        className={`relative rounded-3xl overflow-hidden shadow-lg border border-stone-200 transition-all duration-700 ease-in-out bg-stone-100 flex-shrink-0 ${
+          activeImage.portrait 
+            ? "h-[450px] md:h-[600px] w-[80%] md:w-[450px]" // Rozměry pro fotku na výšku
+            : "aspect-video w-full"               // Rozměry pro fotku na šířku
+        }`}
+      >
         <Image
-          src={activeImage || "/Jizerky.jpg"}
-          alt="Tour gallery main image"
+          src={activeImage.url}
+          alt="Active tour image"
           fill
-          className="object-cover transition-all duration-500"
+          className={`object-cover transition-opacity duration-300 ${
+            isFading ? "opacity-0" : "opacity-100"
+          }`} 
           priority
         />
       </div>
 
-      {/* Náhledy (Thumbnails) */}
-      {images.length > 1 && (
-        <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
-          {images.map((img, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveImage(img)}
-              className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all ${
-                activeImage === img ? "border-emerald-500 scale-95" : "border-transparent hover:border-emerald-200"
-              }`}
-            >
-              <Image
-                src={img}
-                alt={`Thumbnail ${index + 1}`}
-                fill
-                className="object-cover"
-              />
-            </button>
-          ))}
-        </div>
-      )}
+      {/* Náhledy */}
+      <div className="grid grid-cols-4 md:grid-cols-6 gap-3 w-full">
+        {images.map((img, index) => (
+          <button
+            key={index}
+            onClick={() => handleImageChange(img)}
+            className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all duration-300 ${
+              activeImage.url === img.url ? "border-emerald-500 scale-95 opacity-100" : "border-transparent hover:border-emerald-200 opacity-70 hover:opacity-100"
+            }`}
+          >
+            <Image src={img.url} alt="Thumbnail" fill className="object-cover" />
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
