@@ -25,9 +25,9 @@ export default function TourGallery({ images }: { images: TourImage[] }) {
   return (
     <div className="flex flex-col items-center space-y-6 w-full">
       <div 
-        className={`relative rounded-3xl overflow-hidden shadow-lg border border-stone-200 transition-all duration-700 ease-in-out bg-stone-100 flex-shrink-0 ${
+        className={`relative rounded-3xl overflow-hidden shadow-lg border border-stone-200 transition-all duration-700 ease-in-out bg-stone-100 shrink-0 ${
           activeImage.portrait 
-            ? "h-[450px] md:h-[600px] w-[80%] md:w-[450px]" // Rozměry pro fotku na výšku
+            ? "h-112.5 md:h-150 w-[80%] md:w-112.5" // Rozměry pro fotku na výšku
             : "aspect-video w-full"               // Rozměry pro fotku na šířku
         }`}
       >

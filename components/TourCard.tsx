@@ -36,11 +36,11 @@ export const TourCard = ({ id, title, duration, difficulty, distance, category, 
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Spodní část: Texty */}
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="p-6 flex flex-col grow">
         <h3 className="text-xl font-extrabold text-emerald-950 mb-4 group-hover:text-emerald-600 transition-colors leading-tight">
           {title}
         </h3>

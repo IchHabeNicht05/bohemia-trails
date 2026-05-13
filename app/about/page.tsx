@@ -10,9 +10,9 @@ export default function AboutPage() {
       <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-stone-200 grid md:grid-cols-2 gap-12 items-center">
         
         {/* Fotka průvodce */}
-        <div className="relative aspect-[3/4] bg-stone-100 rounded-2xl overflow-hidden shadow-sm">
+        <div className="relative aspect-3/4 bg-stone-100 rounded-2xl overflow-hidden shadow-sm">
           <Image 
-            src="/aboutme.png" 
+            src="/aboutme.webp" 
             alt="Guide Profile" 
             fill 
             className="object-cover"

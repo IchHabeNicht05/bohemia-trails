@@ -12,9 +12,40 @@ const poppins = Poppins({
   variable: '--font-poppins', // Volitelné: vytvoří CSS proměnnou
 });
 
-export const metadata = {
-  title: "BohemiaPath | Discover Hidden Gems of Czechia",
-  description: "Join our expert-led hiking tours through the most beautiful landscapes of Bohemia.",
+export const metadata: Metadata = {
+  title: {
+    default: "BohemiaPath | Discover Hidden Gems of Czechia",
+    template: "%s | BohemiaPath"
+  },
+  description: "Experience authentic hiking tours through the most beautiful landscapes of Bohemia. Expert-led tours, hidden trails, and unforgettable memories in Czechia.",
+  keywords: ["hiking tours Czechia", "Bohemia hiking", "Czech Republic guide", "BohemiaPath", "active holidays Czechia", "hiking in Bohemia"],
+  authors: [{ name: "BohemiaPath" }],
+  metadataBase: new URL("https://bohemia-path.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "BohemiaPath | Discover Hidden Gems of Czechia",
+    description: "Join our expert-led hiking tours through the most beautiful landscapes of Bohemia.",
+    url: "https://bohemia-path.com",
+    siteName: "BohemiaPath",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/Jizerky.jpg", // Do složky /public dej obrázek og-image.jpg (1200x630px)
+        width: 1200,
+        height: 630,
+        alt: "BohemiaPath Hiking Tours",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BohemiaPath | Discover Hidden Gems of Czechia",
+    description: "Discover hidden trails of Bohemia with our expert guides.",
+    images: ["/Jizerky.jpg"],
+  },
 };
 
 export default function RootLayout({

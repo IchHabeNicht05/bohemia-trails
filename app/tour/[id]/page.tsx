@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import { TOURS } from "@/lib/data";
 import { ArrowLeft, Clock, Mountain, Map, CalendarCheck } from "lucide-react";
@@ -74,7 +74,7 @@ export default async function TourDetail({
 
         {/* --- PŘIPRAVENÁ FAREHARBOR BOOKING ZÓNA --- */}
 
-        <div className="mt-12 bg-stone-50 p-8 md:p-12 rounded-3xl border-2 border-dashed border-stone-200 flex flex-col items-center justify-center min-h-[350px] text-center">
+        <div className="mt-12 bg-stone-50 p-8 md:p-12 rounded-3xl border-2 border-dashed border-stone-200 flex flex-col items-center justify-center min-h-87.5 text-center">
           <div className="bg-white p-4 rounded-full shadow-sm mb-4 border border-stone-100">
             <CalendarCheck className="text-emerald-500" size={32} />
           </div>
