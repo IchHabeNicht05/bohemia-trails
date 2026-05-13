@@ -109,7 +109,7 @@ export default function Navbar() {
               <Link 
                 key={link.name}
                 href={link.path} 
-                className={`text-sm font-black tracking-widest transition-colors hover:text-emerald-400 ${
+                className={`text-sm font-bold tracking-widest transition-colors hover:text-emerald-400 ${
                   isActive(link.path) ? "text-emerald-400" : "text-emerald-50/80"
                 }`}
               >
@@ -118,7 +118,7 @@ export default function Navbar() {
             ))}
             <Link 
               href="/custom-tour" 
-              className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-black rounded-full transition-all hover:scale-105 shadow-lg text-xs uppercase tracking-widest"
+              className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold rounded-full transition-all hover:scale-105 shadow-lg text-xs uppercase tracking-widest"
             >
               Custom Tour
             </Link>
