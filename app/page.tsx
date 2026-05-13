@@ -41,15 +41,22 @@ export default function Home() {
         </div>
         
         {/* 2. FILTROVACÍ LIŠTA */}
-        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full max-w-3xl px-6 z-20">
-          <div className="bg-white/90 backdrop-blur-xl rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-2 flex flex-row items-center justify-between border border-white">
+        <div className="absolute -bottom-16 md:-bottom-10 left-1/2 -translate-x-1/2 w-full max-w-3xl px-4 md:px-6 z-20">
+          <div className={`
+            bg-white/90 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white
+            /* MOBIL: Vertikální stack, víc zaoblené rohy */
+            flex flex-col p-4 gap-4 rounded-[2.5rem]
+            /* DESKTOP: Horizontální řada, pilulka */
+            md:flex-row md:items-center md:justify-between md:p-2 md:rounded-full
+          `}>
             
-            <div className="flex gap-1 ml-2">
+            {/* Kategorie: Na mobilu se můžou scrollovat do boku, aby nezabíraly místo */}
+            <div className="flex gap-1 overflow-x-auto no-scrollbar pb-1 md:pb-0 md:ml-2">
               {CATEGORIES.map((category) => (
                 <button 
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${
+                  className={`px-5 py-2.5 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap ${
                     activeCategory === category 
                       ? "bg-emerald-100 text-emerald-900" 
                       : "text-stone-500 hover:text-emerald-700"
@@ -60,9 +67,10 @@ export default function Home() {
               ))}
             </div>
 
+            {/* Hlavní tlačítko: Na mobilu na celou šířku */}
             <button 
               onClick={scrollToResults}
-              className="px-10 py-4 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-black rounded-full text-sm uppercase tracking-widest transition-all shadow-lg active:scale-95"
+              className="w-full md:w-auto px-10 py-4 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-black rounded-full text-sm uppercase tracking-widest transition-all shadow-lg active:scale-95"
             >
               Find My Path
             </button>
