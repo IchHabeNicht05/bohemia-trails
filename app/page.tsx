@@ -6,7 +6,6 @@ import { Hero } from "@/components/Hero";
 import { TourCard } from "@/components/TourCard";
 import { TOURS } from "@/lib/data";
 
-// Přidal jsem "Nature", aby filtr fungoval pro všechny tvé túry
 const CATEGORIES = ["All Tours", "Rock Cities", "Nature"];
 
 export default function Home() {
@@ -42,18 +41,18 @@ export default function Home() {
         </div>
         
         {/* 2. FILTROVACÍ LIŠTA */}
-        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full max-w-4xl px-6 z-20">
-          <div className="bg-white rounded-2xl shadow-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between border border-emerald-100">
+        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full max-w-3xl px-6 z-20">
+          <div className="bg-white/90 backdrop-blur-xl rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-2 flex flex-row items-center justify-between border border-white">
             
-            <div className="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+            <div className="flex gap-1 ml-2">
               {CATEGORIES.map((category) => (
                 <button 
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-6 py-2 rounded-full text-sm whitespace-nowrap transition-colors ${
+                  className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${
                     activeCategory === category 
-                      ? "bg-emerald-100 text-emerald-900 font-bold" 
-                      : "text-emerald-700 hover:bg-emerald-50 font-medium"
+                      ? "bg-emerald-100 text-emerald-900" 
+                      : "text-stone-500 hover:text-emerald-700"
                   }`}
                 >
                   {category}
@@ -63,7 +62,7 @@ export default function Home() {
 
             <button 
               onClick={scrollToResults}
-              className="w-full md:w-auto px-8 py-3 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold rounded-xl transition-colors"
+              className="px-10 py-4 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-black rounded-full text-sm uppercase tracking-widest transition-all shadow-lg active:scale-95"
             >
               Find My Path
             </button>

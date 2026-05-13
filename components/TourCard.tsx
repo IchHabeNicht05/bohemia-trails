@@ -41,22 +41,22 @@ export const TourCard = ({ id, title, duration, difficulty, distance, category, 
 
       {/* Spodní část: Texty */}
       <div className="p-6 flex flex-col grow">
-        <h3 className="text-xl font-extrabold text-emerald-950 mb-4 group-hover:text-emerald-600 transition-colors leading-tight">
+        <h3 className="text-2xl font-extrabold text-emerald-950 mb-4 group-hover:text-emerald-600 transition-colors leading-tight">
           {title}
         </h3>
         
         <div className="flex flex-wrap gap-5 text-sm text-stone-600 mb-8 font-medium">
           <div className="flex items-center gap-2">
             <Clock size={18} className="text-emerald-500" /> 
-            <span>{duration}</span>
+            <span className='font-bold'>{duration}</span>
           </div>
           <div className="flex items-center gap-2">
             <Mountain size={18} className="text-emerald-500" /> 
-            <span>{difficulty}</span>
+            <span className='font-bold'>{difficulty}</span>
           </div>
           <div className="flex items-center gap-2">
             <Map size={18} className="text-emerald-500" /> 
-            <span>{distance}</span>
+            <span className='font-bold'>{distance}</span>
           </div>
         </div>
 

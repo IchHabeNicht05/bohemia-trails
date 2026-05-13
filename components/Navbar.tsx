@@ -2,17 +2,18 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Přidáno pro zjištění aktuální stránky
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // Získáme aktuální URL adresu
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      // Sníženo na 10 pro citlivější reakci plovoucího efektu
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -21,13 +22,9 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Pomocná funkce pro zavření menu při kliknutí na odkaz
   const closeMenu = () => setIsOpen(false);
-
-  // Pomocná funkce pro zjištění, zda je odkaz aktivní
   const isActive = (path: string) => pathname === path;
 
-  // Seznam odkazů pro snadnější mapování
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About Me", path: "/about" },
@@ -35,54 +32,61 @@ export default function Navbar() {
   ];
 
   return (
-    <nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-            ? "bg-emerald-950/90 backdrop-blur-lg border-b border-emerald-900/50 shadow-sm py-4" 
-            : "bg-emerald-800 py-6" 
-        }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        
-        {/* LOGO */}
-        <Link href="/" className="text-2xl font-bold tracking-tight z-50 flex items-center" onClick={closeMenu}>
-          Bohemia<span className="text-emerald-500">Path</span>
-        </Link>
-
-        {/* DESKTOP ODKAZY */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name}
-              href={link.path} 
-              className={`text-sm font-medium transition-colors hover:text-emerald-400 ${
-                isActive(link.path) ? "text-emerald-400" : "text-emerald-50"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
+    // VNĚJŠÍ WRAPPER: Drží pozici nahoře a centruje obsah, pointer-events-none propouští kliky "mimo" pilulku
+    <div className="fixed top-0 w-full z-50 flex justify-center px-4 py-4 sm:py-6 pointer-events-none">
+      
+      <nav 
+        className={`
+          pointer-events-auto transition-all duration-500 ease-in-out flex items-center justify-between
+          bg-emerald-900/50 backdrop-blur-xl border border-white/10 shadow-2xl
+          ${isScrolled 
+            ? "w-full max-w-5xl py-3 px-6 rounded-full" 
+            : "w-full max-w-6xl py-4 px-8 rounded-full sm:rounded-4xl"
+          }
+        `}
+      >
+        <div className="w-full flex items-center justify-between">
           
-          <Link 
-            href="/custom-tour" 
-            className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold rounded-full transition-all hover:scale-105 hover:shadow-md text-sm"
-          >
-            Custom Tour
+          {/* LOGO */}
+          <Link href="/" className="text-xl sm:text-2xl font-bold tracking-tight z-50 flex items-center shrink-0" onClick={closeMenu}>
+            <span className="text-white">Bohemia</span><span className="text-emerald-500">Path</span>
           </Link>
+
+          {/* DESKTOP ODKAZY */}
+          <div className="hidden md:flex items-center gap-8 lg:gap-12">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name}
+                href={link.path} 
+                className={`text-sm font-semibold transition-colors hover:text-emerald-400 ${
+                  isActive(link.path) ? "text-emerald-400" : "text-emerald-50"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+            
+            <Link 
+              href="/custom-tour" 
+              className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-black rounded-full transition-all hover:scale-105 shadow-lg text-xs uppercase tracking-widest"
+            >
+              Custom Tour
+            </Link>
+          </div>
+
+          {/* HAMBURGER TLAČÍTKO */}
+          <button 
+            className="md:hidden text-emerald-50 hover:text-emerald-400 transition-colors z-50 p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
 
-        {/* HAMBURGER TLAČÍTKO (Pouze pro mobil) */}
-        <button 
-          className="md:hidden text-emerald-50 hover:text-emerald-400 transition-colors z-50 p-2"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-
-        {/* MOBILNÍ MENU OVERLAY */}
+        {/* MOBILNÍ MENU OVERLAY (Ponecháno beze změn v logice a stylu) */}
         <div 
-          className={`fixed inset-0 min-h-screen bg-emerald-950/98 backdrop-blur-md transition-all duration-300 ease-in-out md:hidden flex flex-col items-center justify-center p-8 z-40 ${
+          className={`fixed inset-0 bg-emerald-900 backdrop-blur-md transition-all duration-300 ease-in-out md:hidden flex flex-col items-center justify-center p-8 z-40 rounded-4xl h-[92vh] ${
             isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           }`}
         >
@@ -102,7 +106,6 @@ export default function Navbar() {
               </Link>
             ))}
             
-            {/* Tlačítko jako samostatná velká položka */}
             <Link 
               href="/custom-tour" 
               onClick={closeMenu}
@@ -113,7 +116,7 @@ export default function Navbar() {
           </div>
         </div>
 
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 }

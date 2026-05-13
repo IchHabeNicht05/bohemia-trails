@@ -13,8 +13,7 @@ export default function ContactPage() {
 
     const formData = new FormData(e.currentTarget);
     
-    // Používáme tvůj ID: xvzldwke
-    const response = await fetch("https://formspree.io/f/xvzldwke", {
+    const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_CONTACT_FORMSPREE_ID}`, {
       method: "POST",
       body: formData,
       headers: {
