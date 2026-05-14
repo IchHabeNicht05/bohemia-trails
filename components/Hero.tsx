@@ -11,7 +11,7 @@ export const Hero = () => {
       </h1>
       
       <p className="text-lg md:text-xl text-emerald-50/80 max-w-xl mx-auto font-medium leading-relaxed">
-        Explore the hidden gems of the Czechia
+        Explore the hidden gems of Czechia
       </p>
     </div>
   );
