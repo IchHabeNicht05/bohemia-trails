@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -49,7 +50,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen pt-32 pb-20 px-6 max-w-2xl mx-auto text-center">
+    <main className="min-h-screen pt-32 pb-20 px-6 max-w-4xl mx-auto text-center">
       <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
         Get in Touch
       </h1>
@@ -103,6 +104,9 @@ export default function ContactPage() {
               </>
             )}
           </button>
+          <p className="text-[10px] text-emerald-900/50 text-center mt-4">
+            By sending this form, you agree to our <Link href="/privacy-policy">Privacy Policy</Link> and <Link href="/terms-and-conditions">Terms & Conditions</Link>.
+          </p>
 
           {status === "error" && (
             <p className="text-red-600 font-bold text-center mt-2">

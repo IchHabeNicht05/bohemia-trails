@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen pt-32 pb-20 px-6 max-w-4xl mx-auto">
+    <main className="min-h-screen pt-32 pb-20 px-6 max-w-6xl mx-auto">
       <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-12">
         About Me
       </h1>
@@ -19,7 +19,7 @@ export default function AboutPage() {
         </div>
         
         <div className="max-w-2xl">
-          <h3 className="text-2xl font-bold text-emerald-900 mb-4 tracking-tight">
+          <h3 className="text-4xl font-bold text-emerald-900 mb-4 tracking-tight">
             Your Guide to Jizera
           </h3>
           

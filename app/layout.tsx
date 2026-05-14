@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 
 // 2. Nastavíme font Poppins a vybereme řezy (weights), které na webu používáme
 const poppins = Poppins({ 
@@ -58,10 +59,11 @@ export default function RootLayout({
       {/* 3. Změníme inter.className na poppins.className */}
       <body className={`${poppins.className} flex flex-col min-h-screen bg-stone-50`}>
         <Navbar />
-        <div className="flex-grow">
+        <div className="grow">
           {children}
         </div>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

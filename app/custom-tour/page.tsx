@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 export default function CustomTourPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -41,7 +42,7 @@ export default function CustomTourPage() {
             onClick={() => setStatus("idle")}
             className="text-emerald-600 font-bold hover:underline"
           >
-            Send another request
+            Send another message
           </button>
         </div>
       </main>
@@ -100,10 +101,14 @@ export default function CustomTourPage() {
           >
             {status === "loading" ? "Sending..." : (
               <>
-                Send Inquiry <Send size={20} />
+                Send Message <Send size={20} />
               </>
             )}
           </button>
+
+          <p className="text-[10px] text-white text-center mt-4">
+            By sending this form, you agree to our <Link href="/privacy-policy"><span className="text-black">Privacy Policy</span></Link> and <Link href="/terms-and-conditions"><span className="text-black">Terms & Conditions</span></Link>.
+          </p>
           
           {status === "error" && (
             <p className="text-red-900 font-bold text-center mt-2">
