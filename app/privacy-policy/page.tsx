@@ -1,42 +1,57 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function PrivacyPolicy() {
-    const router = useRouter();
+  const router = useRouter();
+
   return (
     <main className="min-h-screen pt-32 pb-20 px-6 max-w-6xl mx-auto">
-        <button 
+      <button 
         onClick={() => router.back()}
-        className="flex items-center gap-2 text-emerald-400 hover:text-white transition-colors mb-8 font-bold uppercase text-xs tracking-widest"
+        className="flex items-center gap-2 text-emerald-400 hover:text-white transition-all mb-10 font-bold uppercase text-xs tracking-[0.2em]"
       >
         <ArrowLeft size={16} /> Back
       </button>
-      <h1 className="text-4xl font-black text-white mb-8 uppercase tracking-tighter">Privacy Policy</h1>
-      <div className="bg-white rounded-4xl p-8 md:p-12 text-stone-700 space-y-6 shadow-xl">
-        <section>
-          <h2 className="text-xl font-bold text-emerald-950 mb-3">1. Data Controller</h2>
-          <p>
-            The data controller responsible for your personal information is{" "}
-            <strong>BohemiaPath</strong>. 
-            For legal inquiries, please contact us via our contact form.
+
+      <div className="mb-12">
+        <h1 className="text-5xl md:text-5xl font-black text-white tracking-tighter leading-none">
+          Privacy <span className="text-emerald-500">Policy</span>
+        </h1>
+        <p className="text-emerald-100/40 text-xs font-medium max-w-xl mt-2">
+          Your trust is our priority. Here is how we handle your data with care and respect.
         </p>
+      </div>
+
+      <div className="bg-white rounded-[3rem] p-8 md:p-16 shadow-2xl space-y-12">
+        <section className="space-y-4">
+          <h2 className="text-2xl font-black text-emerald-950 uppercase tracking-tight">1. Data Controller</h2>
+          <p className="text-stone-600 leading-relaxed text-lg md:text-xl">
+            The data controller responsible for your personal information is <strong className="text-emerald-950">BohemiaPath</strong>. 
+            We take your privacy seriously and process your data in accordance with GDPR regulations.
+          </p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold text-emerald-950 mb-3">2. Data We Collect</h2>
-          <p>We collect information you provide directly via our contact and booking forms, including your name, email address, and any details regarding your travel plans.</p>
+        <section className="space-y-4">
+          <h2 className="text-2xl font-black text-emerald-950 uppercase tracking-tight">2. Data We Collect</h2>
+          <p className="text-stone-600 leading-relaxed text-lg md:text-xl">
+            We collect information you provide directly via our contact and booking forms, including your <span className="text-emerald-600 font-bold">name, email address</span>, and any details regarding your travel plans or fitness level.
+          </p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold text-emerald-950 mb-3">3. How We Use Your Data</h2>
-          <p>Your data is used solely to process your inquiries, provide tailor-made tour offers, and manage your bookings. We use <strong>Formspree</strong> as a third-party processor to handle form submissions.</p>
+        <section className="space-y-4">
+          <h2 className="text-2xl font-black text-emerald-950 uppercase tracking-tight">3. Third-Party Processors</h2>
+          <p className="text-stone-600 leading-relaxed text-lg md:text-xl">
+            Your data is used solely to provide tailor-made tour offers. We use <strong className="text-emerald-950">Formspree</strong> as a secure third-party processor to handle form submissions. We never sell your data to third parties.
+          </p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-bold text-emerald-950 mb-3">4. Cookies</h2>
-          <p>We use only essential technical cookies necessary for the website to function. We do not use tracking or marketing cookies at this time.</p>
+        <section className="space-y-4 pt-8 border-t border-stone-100">
+          <p className="text-stone-400 text-sm uppercase font-bold tracking-widest">
+            Your rights: You can request access, correction or deletion of your data at any time.
+          </p>
         </section>
       </div>
     </main>
