@@ -83,7 +83,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-emerald-950 mb-4">
-              Top Experiences in Bohemian Paradise
+              Top Experiences in Bohemia
             </h2>
             <p className="text-emerald-700 text-lg">
               Hand-picked trails combining sandstone rocks, deep pine forests, and local history.

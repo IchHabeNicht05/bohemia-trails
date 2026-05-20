@@ -23,4 +23,8 @@ export const faqData = [
     question: "Can I join if I travel alone?",
     answer: "Absolutely. Solo travelers are very welcome."
   },
+  {
+    question: "Is transportation included in the tour?",
+    answer: "No, transportation is not included in the package and is arranged individually after booking the tour. It can be done via public transport, private arrangements, or a private pick-up service. This will require an additional payment, the amount of which depends on the selected type and combination of transport."
+  },
 ];
