@@ -4,6 +4,7 @@ import { TOURS } from "@/lib/data";
 import { ArrowLeft, Clock, Mountain, Map, CalendarCheck } from "lucide-react";
 import { notFound } from "next/navigation";
 import TourGallery from "@/components/TourGallery";
+import TourInclusion from "@/components/TourInclusion";
 
 export default async function TourDetail({
   params,
@@ -70,6 +71,10 @@ export default async function TourDetail({
             instructions and keep the pace comfortable for the whole group.
             Ensure you bring comfortable hiking shoes and a bottle of water.
           </p>
+          <TourInclusion 
+            included={tour.included || []} 
+            notIncluded={tour.notIncluded || ""} 
+          />
         </div>
 
         {/* --- VYLEPŠENÁ PŘIPRAVENÁ BOOKING ZÓNA --- */}

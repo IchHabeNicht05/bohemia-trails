@@ -6,7 +6,7 @@ import { Hero } from "@/components/Hero";
 import { TourCard } from "@/components/TourCard";
 import { TOURS } from "@/lib/data";
 
-const CATEGORIES = ["All Tours", "Rock Cities", "Nature"];
+const CATEGORIES = ["All Tours", "Rock Cities", "Nature", "Culture"];
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All Tours");
