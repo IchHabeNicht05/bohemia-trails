@@ -7,7 +7,7 @@ interface TourProps {
   title: string;
   duration: string;
   difficulty: string;
-  distance: string;
+  distance?: string;
   category?: string;
   images: { url: string; portrait: boolean }[];
 }
