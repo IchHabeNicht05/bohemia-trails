@@ -54,10 +54,12 @@ export const TourCard = ({ id, title, duration, difficulty, distance, category, 
             <Mountain size={18} className="text-emerald-500" /> 
             <span className='font-bold'>{difficulty}</span>
           </div>
+          {distance && (
           <div className="flex items-center gap-2">
             <Map size={18} className="text-emerald-500" /> 
             <span className='font-bold'>{distance}</span>
           </div>
+        )}
         </div>
 
         <Link 

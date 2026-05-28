@@ -54,10 +54,12 @@ export default async function TourDetail({
               {tour.difficulty}
             </span>
           </div>
-          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100 flex items-center gap-3">
-            <Map className="text-emerald-500" size={20} />
-            <span className="font-bold text-emerald-950">{tour.distance}</span>
-          </div>
+          {tour.distance && (
+            <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100 flex items-center gap-3">
+              <Map className="text-emerald-500" size={20} />
+              <span className="font-bold text-emerald-950">{tour.distance}</span>
+            </div>
+          )}
         </div>
 
         <div className="prose prose-lg text-stone-600 mb-14 max-w-none">
@@ -65,12 +67,6 @@ export default async function TourDetail({
             {tour.description}
           </p>
           <div className="h-px bg-stone-100 my-8" />
-          <p className="leading-relaxed">
-            Led by our local expert guides, this tour ensures you won't miss any
-            hidden gems along the way. We provide all necessary safety
-            instructions and keep the pace comfortable for the whole group.
-            Ensure you bring comfortable hiking shoes and a bottle of water.
-          </p>
           <TourInclusion 
             included={tour.included || []} 
             notIncluded={tour.notIncluded || ""} 

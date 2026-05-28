@@ -71,7 +71,7 @@ export default function TourInclusion({ included, notIncluded }: InclusionProps)
         </div>
         
         <p className="mt-8 text-sm text-stone-400 font-medium italic">
-          * Personal travel insurance is not included. We recommend having one for mountain activities.
+          * Personal travel insurance is not included
         </p>
       </div>
       
