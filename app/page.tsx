@@ -110,6 +110,7 @@ export default function Home() {
                   duration={tour.duration}
                   difficulty={tour.difficulty}
                   distance={tour.distance}
+                  transportTime={tour.transportTime}
                   category={tour.category}
                   images={tour.images} 
                 />

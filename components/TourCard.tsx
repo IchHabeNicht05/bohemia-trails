@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Clock, Mountain, Map, ArrowRight } from 'lucide-react';
+import { Clock, Mountain, Map, ArrowRight, Car } from 'lucide-react';
 
 interface TourProps {
   id: number | string;
   title: string;
+  transportTime?: string;
   duration: string;
   difficulty: string;
   distance?: string;
@@ -12,7 +13,7 @@ interface TourProps {
   images: { url: string; portrait: boolean }[];
 }
 
-export const TourCard = ({ id, title, duration, difficulty, distance, category, images }: TourProps) => {
+export const TourCard = ({ id, title, transportTime, duration, difficulty, distance, category, images }: TourProps) => {
   // Definujeme hlavní obrázek: vezmeme první z pole, pokud pole neexistuje nebo je prázdné, použijeme fallback
   const mainImage = (images && images.length > 0 && images[0].url) 
     ? images[0].url 
@@ -46,10 +47,18 @@ export const TourCard = ({ id, title, duration, difficulty, distance, category, 
         </h3>
         
         <div className="flex flex-wrap gap-5 text-sm text-stone-600 mb-8 font-medium">
-          <div className="flex items-center gap-2">
-            <Clock size={18} className="text-emerald-500" /> 
-            <span className='font-bold'>{duration}</span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5">
+              <Clock size={18} className="text-emerald-500" /> 
+              <span className='font-bold'>{duration}</span>
+            </div>
+            <div className="w-px h-4 bg-stone-200" /> {/* Malý oddělovač */}
+            <div className="flex items-center gap-1.5">
+              <Car size={18} className="text-emerald-500" /> 
+              <span className='font-bold'>{transportTime || "1.5h+1.5h"}</span>
+            </div>
           </div>
+
           <div className="flex items-center gap-2">
             <Mountain size={18} className="text-emerald-500" /> 
             <span className='font-bold'>{difficulty}</span>

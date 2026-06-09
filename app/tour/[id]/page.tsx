@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 import { TOURS } from "@/lib/data";
-import { ArrowLeft, Clock, Mountain, Map, CalendarCheck } from "lucide-react";
+import { ArrowLeft, Clock, Mountain, Map, CalendarCheck, Car } from "lucide-react";
 import { notFound } from "next/navigation";
 import TourGallery from "@/components/TourGallery";
 import TourInclusion from "@/components/TourInclusion";
@@ -50,11 +50,20 @@ export default async function TourDetail({
           <TourGallery images={tour.images || ["/Jizerky.jpg"]} />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100 flex items-center gap-3">
             <Clock className="text-emerald-500" size={20} />
             <span className="font-bold text-emerald-950">{tour.duration}</span>
           </div>
+
+          <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100 flex flex-col sm:flex-row items-center gap-3">
+            <Car className="text-emerald-500 shrink-0" size={20} />
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase text-stone-400 font-bold leading-none mb-1">Transport</span>
+              <span className="font-bold text-emerald-950 leading-none">{tour.transportTime || "1.5h + 1.5h"}</span>
+            </div>
+          </div>
+
           <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100 flex items-center gap-3">
             <Mountain className="text-emerald-500" size={20} />
             <span className="font-bold text-emerald-950">
