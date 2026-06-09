@@ -49,7 +49,7 @@ export default function CookiePolicy() {
 
         <section className="space-y-4 pt-8 border-t border-stone-100">
           <p className="text-stone-400 text-sm uppercase font-bold tracking-widest">
-            Last updated: May 2024
+            Last updated: May 2026
           </p>
         </section>
       </div>
