@@ -5,7 +5,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
-import Script from "next/script";
 
 // 2. Nastavíme font Poppins a vybereme řezy (weights), které na webu používáme
 const poppins = Poppins({ 
@@ -65,12 +64,6 @@ export default function RootLayout({
         </div>
         <Footer />
         <CookieBanner />
-
-        {/* --- Tady je to "hnízdo" pro FareHarbor --- */}
-        <Script 
-          src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes" 
-          strategy="afterInteractive" 
-        />
       </body>
     </html>
   );

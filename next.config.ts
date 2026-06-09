@@ -15,7 +15,15 @@ const securityHeaders = [
   },
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin'
+    value: 'strict-origin-when-cross-origin'
+  },
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin'
+  },
+  {
+    key: 'Content-Security-Policy',
+    value: "object-src 'none'; base-uri 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://widgets.bokun.io https://js.stripe.com; frame-src 'self' https://widgets.bokun.io https://js.stripe.com; connect-src 'self' https://widgets.bokun.io https://api.stripe.com;"
   }
 ];
 
