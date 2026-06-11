@@ -48,6 +48,9 @@ export const metadata: Metadata = {
     description: "Discover hidden trails of Bohemia with our expert guides.",
     images: ["/Jizerky.jpg"],
   },
+  verification: {
+    google: "20xPrXsbGZYesBjkeTaDXiM7o7HA5egUppYpqCkk53U",
+  },
 };
 
 export default function RootLayout({
@@ -65,7 +68,7 @@ export default function RootLayout({
         </div>
         <Footer />
         <CookieBanner />
-        <GoogleAnalytics gaId="G-PEXF428J4Z" />
+        <GoogleAnalytics gaId="G-PEXF4Z0J4Z" />
       </body>
     </html>
   );
