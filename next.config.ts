@@ -23,7 +23,7 @@ const securityHeaders = [
   },
   {
     key: 'Content-Security-Policy',
-    value: "object-src 'none'; base-uri 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.bokun.io https://js.stripe.com; frame-src 'self' https://*.bokun.io https://js.stripe.com; connect-src 'self' https://*.bokun.io https://api.stripe.com; img-src 'self' data: https://*.bokun.io;"
+    value: "object-src 'none'; base-uri 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.bokun.io https://js.stripe.com https://www.googletagmanager.com; frame-src 'self' https://*.bokun.io https://js.stripe.com; connect-src 'self' https://*.bokun.io https://api.stripe.com https://*.google-analytics.com; img-src 'self' data: https://*.bokun.io https://*.google-analytics.com https://www.googletagmanager.com;"
   }
 ];
 

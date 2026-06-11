@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 // 2. Nastavíme font Poppins a vybereme řezy (weights), které na webu používáme
 const poppins = Poppins({ 
@@ -64,6 +65,7 @@ export default function RootLayout({
         </div>
         <Footer />
         <CookieBanner />
+        <GoogleAnalytics gaId="G-PEXF428J4Z" />
       </body>
     </html>
   );
